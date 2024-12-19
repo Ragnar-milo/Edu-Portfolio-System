@@ -1,0 +1,133 @@
+/* src/components/Dashboard.css */
+
+.dashboard {
+  padding: 20px;
+  background-color: #161515;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 1200px; /* Limit the width for better readability */
+  margin: auto; /* Center the dashboard */
+}
+
+h1, h2 {
+  color: #333;
+  font-family: 'Arial', sans-serif;
+}
+
+.stock-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.stock-card {
+  background-color: #171718;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  flex: 1 1 200px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  text-align: center; /* Center text in stock cards */
+}
+
+.stock-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+.stock-card h3 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.2em; /* Increase font size */
+}
+
+.stock-card p {
+  margin: 10px 0 0; /* Add margin for spacing */
+  font-size: 1em; /* Set a consistent font size */
+  color: #555; /* Slightly lighter color for price */
+}
+
+button {
+  margin-top: 15px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  background-color: #17191b00;
+  color: #310303;
+  cursor: pointer;
+  font-size: 1em; /* Increase font size */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+.portfolio {
+  margin-top: 20px;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: left; /* Align text to the left for better readability */
+}
+
+.portfolio table {
+  width: 100%; /* Make the table full width */
+  border-collapse: collapse; /* Remove space between table cells */
+}
+
+.portfolio th, .portfolio td {
+  padding: 10px; /* Add padding for table cells */
+  border: 1px solid #dee2e6; /* Add border to table cells */
+}
+
+.portfolio th {
+  background-color: #007bff; /* Header background color */
+  color: #ffffff; /* Header text color */
+}
+
+.portfolio tr:nth-child(even) {
+  background-color: #f2f2f2; /* Zebra striping for even rows */
+}
+
+.portfolio tr:hover {
+  background-color: #e9ecef; /* Highlight row on hover */
+}
+
+.logout-button {
+  margin-top: 20px; /* Space above the button */
+  padding: 5px 10px; /* Smaller padding for a smaller button */
+  border: none;
+  border-radius: 5px;
+  background-color: #dc3545; /* Red color for logout */
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.8em; /* Smaller font size */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.logout-button:hover {
+  background-color: #c82333; /* Darker red on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+.stock-card {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  flex: 1 1 200px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+  cursor: pointer;
+  text-align: center; /* Center text in stock cards */
+}
+
+.stock-card:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+  background-color: #e9ecef; /* Change background color on hover */
+}
