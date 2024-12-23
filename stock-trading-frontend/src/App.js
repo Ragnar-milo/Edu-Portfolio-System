@@ -1,65 +1,84 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, Link } from 'react-router-dom';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
 import Dashboard from './components/Dashboard';
-import Trade from './components/Trade';
-import './App.css';
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+import './App.css'; 
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [portfolio, setPortfolio] = useState({}); // User's stock portfolio
-  const [error, setError] = useState(null); // Error state for handling errors
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [userId, setUserId] = useState(null); // Fixed variable name
+    const [error, setError] = useState(null);
 
-  // Load portfolio from local storage when the app initializes
-  useEffect(() => {
-    const savedPortfolio = localStorage.getItem('portfolio');
-    if (savedPortfolio) {
-      setPortfolio(JSON.parse(savedPortfolio));
-    }
-  }, []);
+    useEffect(() => {
+        const storedUserId = localStorage.getItem('userId'); // Fixed variable name
+        if (storedUserId) {
+            setIsAuthenticated(true);
+            setUserId(storedUserId); // Fixed variable name
+        }
+    }, []);
 
-  // Save portfolio to local storage whenever it changes
-  useEffect(() => {
-    localStorage.setItem('portfolio', JSON.stringify(portfolio));
-  }, [portfolio]);
+    const handleLoginSuccess = (id) => {
+        setIsAuthenticated(true);
+        setUserId(id); // Fixed variable name
+        localStorage.setItem('userId', id);
+    };
 
-  const handleLoginSuccess = () => {
-    setIsAuthenticated(true);
-  };
+    const handleLogout = () => {
+        setIsAuthenticated(false);
+        setUserId(null); // Fixed variable name
+        localStorage.removeItem('userId');
+    };
 
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    setPortfolio({}); // Optionally clear portfolio on logout
-  };
+    const handleSwitchToLogin = () => {
+        setIsAuthenticated(false);
+    };
 
-  const handleSwitchToLogin = () => {
-    setIsAuthenticated(false); // Ensure the user is not authenticated when switching to login
-  };
+    return (
+        <Router>
+            <div>
+                <nav>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/about">About</Link></li>
+                        <li><Link to="/contact">Contact Us</Link></li>
+                        {isAuthenticated ? (
+                            <li><Link to="/dashboard">Dashboard</Link></li>
+                        ) : (
+                            <>
+                                <li><Link to="/login">Login</Link></li>
+                                <li><Link to="/register">Register</Link></li>
+                            </>
+                        )}
+                    </ul>
+                </nav>
 
-  const handleTradeSuccess = () => {
-    // Handle trade success logic here
-  };
+                {error && <p style={{ color: 'red' }}>{error.message}</p>}
+                <Routes>
+                    {/* Public Routes */}
+                    <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} onError={setError} />} />
+                    <Route path="/register" element={<Register onSwitchToLogin={handleSwitchToLogin} onError={setError} />} />
 
-  const handleError = (error) => {
-    setError(error);
-  };
+                    {/* Protected Routes */}
+                    {isAuthenticated ? (
+                        <>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/about" element={<About />} />
+                            <Route path="/contact" element={<Contact />} />
+                            <Route path="/dashboard" element={<Dashboard userId={userId} onLogout={handleLogout} />} />
+                        </>
+                    ) : (
+                        <Route path="/" element={<Navigate to="/login" />} />
+                    )}
 
-  return (
-    <Router>
-      <div>
-        <h1>Edu-Portfolio System</h1>
-        {error && <p style={{ color: 'red' }}>{error.message}</p>}
-        <Routes>
-          <Route path="/register" element={<Register onSwitchToLogin={handleSwitchToLogin} onError={handleError} />} />
-          <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} setPortfolio={setPortfolio} onError={handleError} />} />
-          <Route path="/dashboard" element={isAuthenticated ? <Dashboard portfolio={portfolio} onLogout={handleLogout} /> : <Login onLoginSuccess={handleLoginSuccess} setPortfolio={setPortfolio} onError={handleError} />} />
-          <Route path="/" element={isAuthenticated ? <Dashboard portfolio={portfolio} onLogout={handleLogout} /> : <Login onLoginSuccess={handleLoginSuccess} setPortfolio={setPortfolio} onError={handleError} />} />
-          <Route path="/trade/:symbol" element={<Trade onTradeSuccess={handleTradeSuccess} onError={handleError} />} />
-        </Routes>
-      </div>
-    </Router>
-  );
+                    <Route path="*" element={<Navigate to="/" />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 };
 
 export default App;

@@ -1,4 +1,3 @@
-// src/components/Trade.js
 import React, { useState } from 'react';
 
 const Trade = ({ stockSymbol, currentPrice, onBuyStock }) => {

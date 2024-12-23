@@ -1,8 +1,7 @@
-// models/index.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 
-const User = sequelize.define('User ', { // Changed from 'User  ' to 'User '
+const User = sequelize.define('User ', {
   username: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -13,7 +12,7 @@ const User = sequelize.define('User ', { // Changed from 'User  ' to 'User '
     allowNull: false,
   },
 }, {
-  tableName: 'users', // Explicitly set the table name to 'Users'
+  tableName: 'users', 
 });
 
 module.exports = { User };

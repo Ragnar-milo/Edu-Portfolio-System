@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../models'); // Import your User model
+const { User } = require('../models');
 const bcrypt = require('bcrypt'); // For password hashing
 const jwt = require('jsonwebtoken'); // For JWT token generation
 
-// Register route
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;
   try {
@@ -17,9 +16,8 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Login route
 router.post('/login', async (req, res) => {
-  console.log('Login attempt:', req.body); // Log the request body
+  console.log('Login attempt:', req.body); 
   const { username, password } = req.body;
   try {
     const user = await User.findOne({ where: { username } });

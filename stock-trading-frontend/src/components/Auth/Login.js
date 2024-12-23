@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; 
 import './Auth.css';
 
-const Login = ({ onLoginSuccess, setPortfolio }) => {
+const Login = ({ onLoginSuccess, setPortfolio, onError }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +22,11 @@ const Login = ({ onLoginSuccess, setPortfolio }) => {
       setPassword('');
       setError('');
       setMessage('Login successful! Redirecting to the dashboard...');
-      onLoginSuccess(); // Call the function to update the login state
+      
+      onLoginSuccess(); 
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 2000); 
     } catch (error) {
       console.error('Error logging in:', error);
       setError('Invalid username or password. Please try again.');
@@ -46,7 +52,7 @@ const Login = ({ onLoginSuccess, setPortfolio }) => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login</button>
+        <button type="submit" disabled={username === '' || password === ''}>Login</button>
       </form>
     </div>
   );

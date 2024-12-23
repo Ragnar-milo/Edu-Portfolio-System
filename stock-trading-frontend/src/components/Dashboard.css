@@ -1,18 +1,25 @@
-/* src/components/Dashboard.css */
-
 .dashboard {
   padding: 20px;
   background-color: #161515;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  max-width: 1200px; /* Limit the width for better readability */
-  margin: auto; /* Center the dashboard */
+  max-width: 1200px; 
+  margin: auto; 
 }
 
-h1, h2 {
-  color: #333;
+h1 {
+  color: black;
   font-family: 'Arial', sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #0c0b0b;
+  font-family: 'Arial', sans-serif;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .stock-list {
@@ -30,23 +37,23 @@ h1, h2 {
   flex: 1 1 200px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
-  text-align: center; /* Center text in stock cards */
+  text-align: center; 
 }
 
 .stock-card:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
 }
 
 .stock-card h3 {
-  margin: 0; /* Remove default margin */
-  font-size: 1.2em; /* Increase font size */
+  margin: 0;
+  font-size: 1.2em; 
 }
 
 .stock-card p {
-  margin: 10px 0 0; /* Add margin for spacing */
-  font-size: 1em; /* Set a consistent font size */
-  color: #555; /* Slightly lighter color for price */
+  margin: 10px 0 0; 
+  font-size: 1em; 
+  color: #555; 
 }
 
 button {
@@ -54,80 +61,103 @@ button {
   padding: 12px 24px;
   border: none;
   border-radius: 5px;
-  background-color: #17191b00;
-  color: #310303;
+  background-color: #dae3ec00;
+  color: #0c0b0b;
   cursor: pointer;
-  font-size: 1em; /* Increase font size */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  font-size: 1em;
+  transition: background-color 0.3s ease, transform 0.2s ease; 
 }
 
 button:hover {
   background-color: #0056b3;
-  transform: scale(1.05); /* Slightly enlarge button on hover */
+  transform: scale(1.05); 
 }
 
 .portfolio {
   margin-top: 20px;
-  background: #f8f9fa;
+  background: #3e3e3f; 
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  text-align: left; /* Align text to the left for better readability */
+  text-align: left;
+  
 }
 
 .portfolio table {
-  width: 100%; /* Make the table full width */
-  border-collapse: collapse; /* Remove space between table cells */
+  width: 100%; 
+  border-collapse: collapse;
 }
 
 .portfolio th, .portfolio td {
-  padding: 10px; /* Add padding for table cells */
-  border: 1px solid #dee2e6; /* Add border to table cells */
+  padding: 10px;
+  border: 1px solid #f7f7fd; 
 }
 
 .portfolio th {
-  background-color: #007bff; /* Header background color */
-  color: #ffffff; /* Header text color */
+  background-color: #072c63; 
+  color: #ffffff; 
 }
 
 .portfolio tr:nth-child(even) {
-  background-color: #f2f2f2; /* Zebra striping for even rows */
+  background-color: #f2f2f2; 
 }
 
 .portfolio tr:hover {
-  background-color: #e9ecef; /* Highlight row on hover */
+  background-color: #036ad1; 
+  color: #ffffff
 }
 
 .logout-button {
-  margin-top: 20px; /* Space above the button */
-  padding: 5px 10px; /* Smaller padding for a smaller button */
+  margin-top: 20px; 
+  padding: 5px 10px; 
   border: none;
   border-radius: 5px;
-  background-color: #dc3545; /* Red color for logout */
+  background-color: #dc3545; 
   color: #ffffff;
   cursor: pointer;
-  font-size: 0.8em; /* Smaller font size */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  font-size: 0.8em; 
+  transition: background-color 0.3s ease, transform 0.2s ease; 
 }
 
 .logout-button:hover {
-  background-color: #c82333; /* Darker red on hover */
-  transform: scale(1.05); /* Slightly enlarge button on hover */
+  background-color: #c82333; 
+  transform: scale(1.05); 
 }
 
 .stock-card {
-  background-color: #f8f9fa;
+  background-color: #193324;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   flex: 1 1 200px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; 
   cursor: pointer;
-  text-align: center; /* Center text in stock cards */
+  text-align: center;
+  color: #ffffff
 }
 
 .stock-card:hover {
-  transform: translateY(-10px); /* Lift effect on hover */
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
-  background-color: #e9ecef; /* Change background color on hover */
+  transform: translateY(-10px); 
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2); 
+  background-color: #0a0a0a; 
+}
+
+
+.buy-button {
+  background-color: #4CAF50;
+  color: rgb(48, 46, 46);
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.buy-button:hover {
+  background-color: #45a049;
 }
